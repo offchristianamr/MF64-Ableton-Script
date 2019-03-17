@@ -13,7 +13,7 @@ class PushColor(Color):
         return not self.needs_rgb_interface or interface.is_rgb
 
     def draw(self, interface):
-        raise self.can_draw_on_interface(interface) or AssertionError
+        assert self.can_draw_on_interface(interface) or AssertionError
         super(PushColor, self).draw(interface)
 
 
@@ -33,7 +33,7 @@ class RgbColor(PushColor):
         """
         Generate a new shaded RGB from this color.
         """
-        raise shade_level > 0 and shade_level <= 2 or AssertionError
+        assert shade_level > 0 and shade_level <= 2 or AssertionError
         shade_factor = 1.0 / 2.0 * (2 - shade_level)
         return RgbColor(self.midi_value + shade_level, [ a * b for a, b in izip(self._rgb_value, repeat(shade_factor)) ])
 
@@ -88,12 +88,12 @@ class AnimatedColor(PushColor):
         return self.color1.can_draw_on_interface(interface) and self.color2.can_draw_on_interface(interface)
 
     def draw(self, interface):
-        raise interface.num_delayed_messages >= 2 or AssertionError
+        assert interface.num_delayed_messages >= 2 or AssertionError
         interface.send_value(self.color1.midi_value)
         interface.send_value(self.color2.midi_value, channel=self.channel2)
 
     def convert_to_midi_value(self):
-        raise NotImplementedError, 'Animations cannot be serialized'
+        assert NotImplementedError, 'Animations cannot be serialized'
 
 
 class Pulse(AnimatedColor):
@@ -129,23 +129,23 @@ class Rgb:
     Table of RgbColors for main matrix.
     """
     BLACK = RgbColor(0)
-    DARK_GREY = RgbColor(0)
-    GREY = RgbColor(127)
-    WHITE = RgbColor(127)
-    RED = RgbColor(13)
-    AMBER = RgbColor(25)
-    YELLOW = RgbColor(37)
-    LIME = RgbColor(49)
-    GREEN = RgbColor(61)
-    SPRING = RgbColor(49)
-    TURQUOISE = RgbColor(73)
-    CYAN = RgbColor(74)
-    SKY = RgbColor(85)
-    OCEAN = RgbColor(85)
-    BLUE = RgbColor(85)
-    ORCHID = RgbColor(85)
-    MAGENTA = RgbColor(97)
-    PINK = RgbColor(109)
+    DARK_GREY = RgbColor(1)
+    GREY = RgbColor(2)
+    WHITE = RgbColor(3)
+    RED = RgbColor(5)
+    AMBER = RgbColor(9)
+    YELLOW = RgbColor(13)
+    LIME = RgbColor(17)
+    GREEN = RgbColor(21)
+    SPRING = RgbColor(25)
+    TURQUOISE = RgbColor(29)
+    CYAN = RgbColor(33)
+    SKY = RgbColor(37)
+    OCEAN = RgbColor(41)
+    BLUE = RgbColor(45)
+    ORCHID = RgbColor(49)
+    MAGENTA = RgbColor(53)
+    PINK = RgbColor(57)
 
 
 class Basic:
@@ -186,68 +186,79 @@ class BiLed:
     ON = FallbackColor(Rgb.WHITE, 127)
 
 
-CLIP_COLOR_TABLE = {15549221: 60,
- 12411136: 61,
- 11569920: 62,
- 8754719: 63,
- 5480241: 64,
- 695438: 65,
- 31421: 66,
- 197631: 67,
- 3101346: 68,
- 6441901: 69,
- 8092539: 70,
- 3947580: 71,
- 16712965: 72,
- 12565097: 73,
- 10927616: 74,
- 8046132: 75,
- 4047616: 76,
- 49071: 77,
- 1090798: 78,
- 5538020: 79,
- 8940772: 80,
- 10701741: 81,
- 12008809: 82,
- 9852725: 83,
- 16149507: 84,
- 12581632: 85,
- 8912743: 86,
- 1769263: 87,
- 2490280: 88,
- 5111762: 89,
- 1698303: 90,
- 9160191: 91,
- 9611263: 92,
- 12094975: 93,
- 14183652: 94,
- 16726484: 95,
- 16753961: 96,
- 16773172: 97,
- 14939139: 98,
- 14402304: 99,
- 12492131: 100,
- 9024637: 101,
- 8962746: 102,
- 10204100: 103,
- 8758722: 104,
- 13011836: 105,
- 15810688: 106,
- 16749734: 107,
- 16753524: 108,
- 16772767: 109,
- 13821080: 110,
- 12243060: 111,
- 11119017: 112,
- 13958625: 113,
- 13496824: 114,
- 12173795: 115,
- 13482980: 116,
- 13684944: 117,
- 14673637: 118,
- 16777215: Rgb.WHITE}
+LIVE_COLORS_TO_MIDI_VALUES = {10927616: 74, 
+   16149507: 84, 
+   4047616: 76, 
+   6441901: 69, 
+   14402304: 99, 
+   8754719: 19, 
+   16725558: 5, 
+   3947580: 71, 
+   10056267: 15, 
+   8237133: 18, 
+   12026454: 11, 
+   12565097: 73, 
+   13381230: 58, 
+   12243060: 111, 
+   16249980: 13, 
+   13013643: 4, 
+   10208397: 88, 
+   695438: 65, 
+   13821080: 110, 
+   3101346: 46, 
+   16749734: 107, 
+   8962746: 102, 
+   5538020: 79, 
+   13684944: 117, 
+   15064289: 119, 
+   14183652: 94, 
+   11442405: 44, 
+   13408551: 100, 
+   1090798: 78, 
+   11096369: 127, 
+   16753961: 96, 
+   1769263: 87, 
+   5480241: 64, 
+   1698303: 90, 
+   16773172: 97, 
+   7491393: 126, 
+   8940772: 80, 
+   14837594: 10, 
+   8912743: 16, 
+   10060650: 105, 
+   13872497: 14, 
+   16753524: 108, 
+   8092539: 70, 
+   2319236: 39, 
+   1716118: 47, 
+   12349846: 59, 
+   11481907: 121, 
+   15029152: 57, 
+   2490280: 25, 
+   11119017: 112, 
+   10701741: 81, 
+   15597486: 8, 
+   49071: 77, 
+   10851765: 93, 
+   12558270: 48, 
+   32192: 43, 
+   8758722: 103, 
+   10204100: 104, 
+   11958214: 55, 
+   8623052: 66, 
+   16726484: 95, 
+   12581632: 86, 
+   13958625: 28, 
+   12173795: 115, 
+   13482980: 116, 
+   16777215: Rgb.WHITE, 
+   6094824: 33, 
+   13496824: 114, 
+   9611263: 92, 
+   9160191: 36}
  
-RGB_COLOR_TABLE = ((0, 0),
+RGB_COLOR_TABLE = (
+ (0, 0),
  (1, 1973790),
  (2, 8355711),
  (3, 16777215),
