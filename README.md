@@ -1,4 +1,4 @@
-# MF64 - Ableton Control Surface Script
+# MF64 - Ableton Control Surface Script (Live 10.0.6)
 DJ Techtool's Midi Fighter 64 control surface script updated for use in Live 10.0.6 by offchristianamr
 
 -----
