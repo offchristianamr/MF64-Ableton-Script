@@ -28,8 +28,8 @@ Clips are orange as they are being quantized and dark red as they are playing
 MODE 1:
 
 Default mode. Button 5 is light blue when in this mode.
-The first two buttons in the upper left switch between scenes 1-7 and 8-14.
-Possible bug: If there are more than 14 scenes it will skip 8-14 and move to the bottom seven scenes instead.
+The first two buttons in the upper left move up and down the session view in groups of seven clips.
+Previously, there was a bug that caused groups to be skipped in this mode, thank you to Jademalo for the fix!
 
 -----------------------------------------------------------------------------------------------------
 
@@ -48,14 +48,14 @@ Holding button 7 will cause the button to turn from light blue to dark red and r
 **Clips cannot be launched while in mode three.**
 
 ROW 4 - Blue - Switches between different tracks. The button corresponding to the currently selected track
-is light green.
+is yellow-green.
 
-ROW 5 - Light Blue - Toggles tracks on and off. Off = dark blue.
+ROW 5 - Yellow - Toggles tracks on and off. Off = dark yellow.
 
-ROW 6 - Pale Blue - Solos tracks. The button corresponding to the currently soloed track is light green.
+ROW 6 - Dark Blue - Solos tracks. The button corresponding to the currently soloed track is a lighter blue.
 
-ROW 7 - Dark Green - Record arms tracks. The button corresponding to the currently armed track is yellow.
-Possible bug: Pressing multiple row 7 buttons quickly can arm multiple tracks. Pressing another button unarms them all.
+ROW 7 - Red - Record arms tracks. The button corresponding to the currently armed track is a brighter red. 
+Pressing multiple row 7 buttons at the same time can arm multiple tracks.
 
 ROW 8 - Pink - Stops tracks.
 
