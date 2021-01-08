@@ -1,4 +1,4 @@
-# MF64 - Ableton Control Surface Script
+# MF64 - Ableton Control Surface Script (Live 11 Beta)
 DJ Techtool's Midi Fighter 64 control surface script, created by padi04 with help from Jademalo, updated for use in Live 11 Beta by offchristianamr.
 
 The aim of this version of the script is to adhere as closely as possible to the original, created for Ableton Live 9.7.
