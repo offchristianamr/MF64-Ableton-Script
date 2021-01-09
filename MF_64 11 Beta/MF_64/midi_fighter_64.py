@@ -89,6 +89,7 @@ class Midi_Fighter_64(ControlSurface):
                 #clip_slot.set_stopped_value(49)
                 #clip_slot.set_started_value(127)
                 clip_slot.set_recording_value(13)
+                # these are written in decimal format, correspond to the RGB_COLOR_TABLE in pushbase/colors.py
         self.delete_button = ConfigurableButtonElement(0, MIDI_NOTE_TYPE, 1, 67)
         self.delete_button.set_on_off_values(49, 55)
         self._session._link()
