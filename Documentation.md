@@ -21,7 +21,8 @@ The first four dark green buttons correspond to the first four tracks.
 The buttons underneath these correspond to any clips within these tracks in Live's session view.
 The colors of these buttons roughly match the colors of the clips present.
 Pressing these buttons launches the corresponding session clip.
-Clips are orange as they are being quantized and dark red as they are playing 
+Clips are orange as they are being quantized and dark red as they are playing.
+Clips armed for recording are dark green, and clips that are currently recording are bright yellow. 
 
 -----------------------------------------------------------------------------------------------------
 
