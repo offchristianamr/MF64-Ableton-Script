@@ -50,7 +50,9 @@ class Midi_Fighter_64(ControlSurface):
 		self._session = SessionComponent(num_tracks, num_scenes)
   		live_colors_to_midi_values = colors.LIVE_COLORS_TO_MIDI_VALUES.copy()
  		live_colors_to_midi_values[16777215] = 119
+		# this appears to change 119 in LIVE_COLORS_TO_MIDI_VALUES to RGB White (same as 3). not sure why.
  		self._session.set_rgb_mode(colors.LIVE_COLORS_TO_MIDI_VALUES, colors.RGB_COLOR_TABLE)
+		# the variable clip_color_table actually goes unused. in the APC40_MKII script, colors.LIVE_COLORS_TO_MIDI_VALUES is replaced with clip_color_table
 		track_offset = self.current_track_offset
 		scene_offset = self.current_scene_offset
 		self._session.set_offsets(track_offset, scene_offset)
