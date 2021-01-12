@@ -83,13 +83,13 @@ class Midi_Fighter_64(ControlSurface):
             scene = self._session.scene(scene_index)
             for track_index in range(num_tracks):
                 clip_slot = scene.clip_slot(track_index)
-                clip_slot.set_triggered_to_play_value(61)
-                clip_slot.set_triggered_to_record_value(13)
-                clip_slot.set_record_button_value(19)
-                #clip_slot.set_stopped_value(49)
-                #clip_slot.set_started_value(127)
-                clip_slot.set_recording_value(13)
-                # these are written in decimal format, correspond to the RGB_COLOR_TABLE in pushbase/colors.py
+                clip_slot.set_triggered_to_play_value(61) #orange-red
+                clip_slot.set_triggered_to_record_value(13) #yellow
+                clip_slot.set_record_button_value(19) #dark green
+                #clip_slot.set_stopped_value(49) # blue
+                #clip_slot.set_started_value(127) #dark red
+                clip_slot.set_recording_value(13) #yellow
+                # numbers correspond to the RGB_COLOR_TABLE in pushbase/colors.py, where every number is assigned a color code in decimal format
         self.delete_button = ConfigurableButtonElement(0, MIDI_NOTE_TYPE, 1, 67)
         self.delete_button.set_on_off_values(49, 55)
         self._session._link()
