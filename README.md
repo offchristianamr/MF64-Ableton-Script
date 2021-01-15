@@ -12,7 +12,7 @@ Comments are left throughout the midi_fighter_64 script by myself which document
 SETUP
 -----
 
-1. Copy the downloaded folder "Midi_Fighter_64" into your Ableton Live's MIDI Remote Scripts folder. 
+1. Copy the downloaded folder "MF_64" into your Ableton Live's MIDI Remote Scripts folder. 
 Located in "C:\Program Files (x86)\Ableton\Live x.x\Resources\MIDI Remote Scripts\" under Windows or
 "\Live x.x\Live.app\Contents\App-Resources\MIDI Remote Scripts\" for Mac OS X.
 
